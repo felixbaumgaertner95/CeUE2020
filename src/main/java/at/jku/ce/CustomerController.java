@@ -1,10 +1,12 @@
 package at.jku.ce;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 
-@RestController
+@Controller
 public class CustomerController {
 
     @RequestMapping("/greeting")
@@ -13,12 +15,12 @@ public class CustomerController {
     }
 
     @RequestMapping(value="/hello.html")
-    public void loginUser(@RequestParam(value="firstname", defaultValue="Hugo") String firstname, @RequestParam(value="lastname", defaultValue = "Hansi") String lastname)  {
-        try {
-            System.out.println("Post method called");
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
+    public ModelAndView loginUser(@RequestParam(value="firstname", defaultValue="Hugo") String firstname, @RequestParam(value="lastname", defaultValue = "Hansi") String lastname)  {
+
+        System.out.println("Post method called " + firstname + " " + lastname);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("hello");
+        return modelAndView;
     }
 }
