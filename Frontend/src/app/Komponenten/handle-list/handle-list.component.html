@@ -1,0 +1,35 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()" #handleForm="ngForm">
+  <mat-form-field>
+    <mat-label>Griff</mat-label>
+    <mat-select [formControl]="handleControl" required [(value)]="order.handle">
+      <mat-option [value]="handle" *ngFor="let handle of handles">{{handle.toString()}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="handleControl.hasError('required')">Bitte wählen Sie einen Griff aus</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Lenker</mat-label>
+    <mat-select [formControl]="handleControl" required [(value)]="order.handleType">
+      <mat-option [value]="handleTyp"*ngFor="let handleTyp of handleTypes">{{handleTyp.toString()}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="handletypeControl.hasError('required')">Bitte wählen Sie einen Lenker aus</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Material</mat-label>
+    <mat-select [formControl]="handleControl" required [(value)]="order.material">
+      <mat-option  [value]="material" *ngFor="let material of materials">{{material.toString()}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="materialControl.hasError('required')">Bitte wählen Sie ein Material aus</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Schaltung</mat-label>
+    <mat-select [formControl]="handleControl" required  [(value)]="order.gear">
+      <mat-option [value]="gear" *ngFor="let gear of gears">{{gear.toString()}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="gearControl.hasError('required')">Bitte wählen Sie eine Schaltung aus</mat-error>
+  </mat-form-field>
+    <button type="submit" [disabled]="!handleForm.form.valid"
+            class="btn btn-info">Bestellung abschicken</button>
+  </form>
+</div>
