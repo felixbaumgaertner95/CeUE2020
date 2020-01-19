@@ -47,6 +47,15 @@ export class HandleListComponent implements OnInit {
   }
 
   onSubmit() {
-   this.orderService.saveOrder(this.order).subscribe(response=>console.log("Order postet"))
+   this.orderService.saveOrder(this.order).subscribe()
+  }
+
+  handleTypeChanged() {
+    this.productService.findGearsFromHandleType(this.order.handleType).subscribe(data=>this.gears=data)
+    this.productService.findMaterialsFromHandleType(this.order.handleType).subscribe(data=>this.materials=data)
+  }
+
+  materialChanged() {
+    this.productService.findHandlesFromMaterial(this.order.material).subscribe(data=>this.handles=data)
   }
 }

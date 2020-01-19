@@ -10,21 +10,21 @@
 
   <mat-form-field>
     <mat-label>Lenker</mat-label>
-    <mat-select [formControl]="handleControl" required [(value)]="order.handleType">
+    <mat-select [formControl]="handletypeControl" required [(value)]="order.handleType" (ngModelChange)="handleTypeChanged()">
       <mat-option [value]="handleTyp"*ngFor="let handleTyp of handleTypes">{{handleTyp.toString()}}</mat-option>
     </mat-select>
     <mat-error *ngIf="handletypeControl.hasError('required')">Bitte wählen Sie einen Lenker aus</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Material</mat-label>
-    <mat-select [formControl]="handleControl" required [(value)]="order.material">
+    <mat-select [formControl]="materialControl" required [(value)]="order.material" (ngModelChange)="materialChanged()">
       <mat-option  [value]="material" *ngFor="let material of materials">{{material.toString()}}</mat-option>
     </mat-select>
     <mat-error *ngIf="materialControl.hasError('required')">Bitte wählen Sie ein Material aus</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Schaltung</mat-label>
-    <mat-select [formControl]="handleControl" required  [(value)]="order.gear">
+    <mat-select [formControl]="gearControl" required  [(value)]="order.gear" >
       <mat-option [value]="gear" *ngFor="let gear of gears">{{gear.toString()}}</mat-option>
     </mat-select>
     <mat-error *ngIf="gearControl.hasError('required')">Bitte wählen Sie eine Schaltung aus</mat-error>
