@@ -5,6 +5,8 @@ import {ProductService} from "../../Service/product.service";
 import {Product} from "../../Klassen/product";
 import {FormControl, Validators} from "@angular/forms";
 import {OrderService} from "../../Service/order.service";
+import {MatDialog} from "@angular/material/dialog";
+import {OrderOverviewComponent} from "../order-overview/order-overview.component";
 
 @Component({
   selector: 'app-handle-list',
@@ -23,11 +25,9 @@ export class HandleListComponent implements OnInit {
   order: Product;
   test: string;
 
-  constructor(private customerService: CustomerService,
-              private productService: ProductService,
+  constructor(private productService: ProductService,
               private orderService: OrderService,
-              private route: ActivatedRoute,
-              private router: Router) {
+              public dialog: MatDialog) {
     this.order=new Product;
   }
 
@@ -47,7 +47,11 @@ export class HandleListComponent implements OnInit {
   }
 
   onSubmit() {
-   this.orderService.saveOrder(this.order).subscribe()
+    this.orderService.setOrder(this.order);
+    const dialogRef= this.dialog.open(OrderOverviewComponent, {
+      height: '600px',
+      width: '400px'
+    })
   }
 
   handleTypeChanged() {

@@ -1,0 +1,21 @@
+<div>
+  Kunde: {{this.customer.lastName}} {{" " + this.customer.firstName}}
+</div>
+<div>
+  Bestellung:
+  <div>
+    Griff: {{this.order.handle}}
+  </div>
+  <div>
+    Lenker: {{this.order.handleType}}
+  </div>
+  <div>
+    Material: {{this.order.material}}
+  </div>
+  <div>
+    Schaltung: {{this.order.gear}}
+  </div>
+</div>
+<button class="btn btn-info" (click)="onSubmit()">bestellen</button>
+<div *ngIf="responseStatus==201">Bestellung erfolgreich</div>
+<button *ngIf="responseStatus==201" (click)="onEnd()">schließen</button>

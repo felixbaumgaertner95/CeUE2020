@@ -11,12 +11,15 @@ import { HandleListComponent } from './Komponenten/handle-list/handle-list.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
+import { OrderOverviewComponent } from './Komponenten/order-overview/order-overview.component';
+import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerFormComponent,
-    HandleListComponent
+    HandleListComponent,
+    OrderOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -26,8 +29,10 @@ import {MatSelectModule} from "@angular/material/select";
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDialogModule,
     ReactiveFormsModule
   ],
+  entryComponents: [OrderOverviewComponent],
   providers: [CustomerService],
   bootstrap: [AppComponent]
 })

@@ -9,6 +9,7 @@ import {Customer} from "../Klassen/customer";
 export class CustomerService {
 
   private usersUrl: string;
+  private customer: Customer;
 
   constructor(private http: HttpClient) {
     this.usersUrl = 'http://localhost:8081/customer';
@@ -22,6 +23,11 @@ export class CustomerService {
   }
 
   public save(customer: Customer): Observable<Customer> {
+    this.customer=customer;
     return this.http.post<Customer>(this.usersUrl+"/add", customer);
+  }
+
+  public getCustomer(): Customer {
+    return this.customer;
   }
 }
